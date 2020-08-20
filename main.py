@@ -16,6 +16,7 @@ class User(db.Model):
     Server = db.Column(db.Text)
     Timing = db.Column(db.Text)
     About = db.Column(db.Text)
+    Name = db.Column(db.Text)
     db.create_all()
 
 
@@ -31,15 +32,18 @@ def index1():
 
 @app.route("/login")
 def login():
-
     return render_template("login.html")
-    
+
+@app.route("/profile")
+def profile():
+    return render_template("index.html")
 
 @app.route("/logger", methods = ['POST'])
 def log():
     email = request.form['emailer']
     password = request.form['pswrd']
     user = User(Email=email, Password=password,Age=None, Server = None, Timing = None)
+    print("logger")
     existing_user = User.query.filter_by(Email=email).first()
     pasword_checker = User.query.filter_by(Password=password).first()
     print(existing_user)
@@ -61,9 +65,8 @@ def register():
     password = request.form['psw']
     repeat = request.form['psw-repeat']
     user = User(Email=email, Password=password)
-    print(user)
+    #print(user)
     existing_user = User.query.filter_by(Email=email).first()
-
     if password != repeat or existing_user is not None:
         return 'invalid credentials the email used may have already been in use or your repeat and original passswords are different '
     elif password==repeat:
@@ -83,7 +86,6 @@ def data():
     user = User(Email=email, Password=password)
     print(user)
     existing_user = User.query.filter_by(Email=email).first()
-
     if password != repeat or existing_user is not None:
         return 'invalid credentials the email used may have already been in use or your repeat and original passswords are different '
     elif password==repeat:
@@ -93,16 +95,26 @@ def data():
         return render_template("home.html") 
 
 
-@app.route("/home")
+@app.route("/collect", methods = ['POST'])
 def home():
+    print("collecter")
     email = request.form['email']
     bday = request.form['bdate']
     time = request.form['time']
-    server = request.form['server']
+    server = request.form['servers']
     about = request.form['about']
-    user = User(Email=Email, Age = bday, Server=Server, Timing=Time, About=about )
-
-    return render_template("home.html")
+    name = request.form['name']
+    #user = User(Email=None, Age = None, Server=None, Timing=None, About=None )
+    user = User.query.filter_by(Email=email).first()
+    user.Age = bday
+    user.Server = server
+    user.Timing = time
+    user.About = about
+    user.Name=name
+    db.create_all()
+    db.session.add(user)
+    db.session.commit()
+    return render_template("index.html")
 
 
 

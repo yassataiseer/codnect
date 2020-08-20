@@ -187,13 +187,12 @@ ul {
     </style>
   </head>
   <ul>
-    <li><a href="/home" >Build/Edit Profile 
-    
-    </a></li>
+    <li><a href="#" >Build/Edit Profile </a></li>
+    <li><a href="/profile">Your Profile</a></li>
       
   </ul>
   <body>
-      <form action="/form">
+      <form action="/collect" name="collect" method= "POST"  class="modal-content">
         <br>
         <br>
         <br>
@@ -206,7 +205,9 @@ ul {
         <div class="item">
           <p>Email</p>
           <div class="name-item">
+            <input type = "text" name = "name" placeholder="name">
             <input type="text" name="email" placeholder="Email" />
+
           </div>
         </div>
 
@@ -237,7 +238,7 @@ ul {
           </div>
         </div>
 
-  <label for="cars">What server do you play on:</label>
+  <label for="servers">What server do you play on:</label>
   <select name="servers" id="servers">
     <option value="North-American">North American</option>
     <option value="asian">Asian</option>
@@ -249,9 +250,7 @@ ul {
           <p>About yourself</p>
           <textarea name = "about" rows="3"></textarea>
         </div>
-        <div class="btn-block">
-          <button type="submit" href="/data">Send</button>
-        </div>
+          <button type="submit" >Send</button>
       </form>
     </div>
   </body>
