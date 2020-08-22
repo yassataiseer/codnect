@@ -11,8 +11,43 @@ display: block;
 line-height: 1.428571429;
 color: #999;
 }
+
+
+ul {
+    list-style-type: none;
+    margin: 5;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: unfixed;
+    top: 0;
+    width: 100%;
+  }
+
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+
+
 </style>
 <div class="container">
+    <ul>
+        <li><a href="/home" >Build/Edit Profile </a></li>
+        <li><a href="/profile">Your Profile</a></li>
+          
+      </ul>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="well well-sm">
@@ -22,17 +57,17 @@ color: #999;
                     </div>
                     <div class="col-sm-6 col-md-8">
                         <h4>
-                            B''haumik Patel</h4>
-                        <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
-                        </i></cite></small>
+                            {{name}}</h4>
+                        <small>{{time}}<i class="glyphicon glyphicon-map-marker">
+                        </i></small>
                         <p>
-                            <i class="glyphicon glyphicon-envelope"></i>email@example.com
+                            <i class="glyphicon glyphicon-envelope"></i>{{email}}
                             <br />
-                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
+                            <i class="glyphicon glyphicon-globe"></i>{{server}}
                             <br />
-                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                            <i class="glyphicon glyphicon-gift"></i>{{bday}}</p>
                         <!-- Split button -->
-
+                            <p>{{about}}</p>
                         </div>
                     </div>
                 </div>
