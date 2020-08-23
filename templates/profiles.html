@@ -47,7 +47,10 @@ ul {
         <li><a href="/home" >Build/Edit Profile </a></li>
         <li><a href="/profile">Your Profile</a></li>
         <li><a href ="/players"> See players </a></li>
+          
       </ul>
+      {% for user in data%}
+
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="well well-sm">
@@ -57,21 +60,25 @@ ul {
                     </div>
                     <div class="col-sm-6 col-md-8">
                         <h4>
-                            {{name}}</h4>
-                        <small>{{time}}<i class="glyphicon glyphicon-map-marker">
+                            {{user[0]}}</h4>
+                        <small>{{user[1]}}<i class="glyphicon glyphicon-map-marker">
                         </i></small>
                         <p>
-                            <i class="glyphicon glyphicon-envelope"></i>{{email}}
+                            <i class="glyphicon glyphicon-envelope"></i>{{user[2]}}
                             <br />
-                            <i class="glyphicon glyphicon-globe"></i>{{server}}
+                            <i class="glyphicon glyphicon-globe"></i>{{user[3]}}
                             <br />
-                            <i class="glyphicon glyphicon-gift"></i>{{bday}}</p>
+                            <i class="glyphicon glyphicon-gift"></i>{{user[4]}}</p>
                         <!-- Split button -->
-                            <p>{{about}}</p>
+                            <p>{{user[5]}}</p>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+        {%endfor%}
+
     </div>
+      
 </div>
